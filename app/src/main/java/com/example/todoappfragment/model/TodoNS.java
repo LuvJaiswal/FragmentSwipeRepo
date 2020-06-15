@@ -6,15 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.todoappfragment.db.TodoCursorWrapper;
-import com.example.todoappfragment.db.TodoDBHelper;
+import com.example.todoappfragment.db.DBHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class TodoDS {
+public class TodoNS {
 
-    private static TodoDS todoInstance;
+    private static TodoNS todoInstance;
 
     //private ArrayList<Todo> mTodoList;
 
@@ -22,9 +22,9 @@ public class TodoDS {
     private static Context mContext;
 
 
-    private TodoDS(Context context){
+    private TodoNS(Context context){
 
-        mDatabase = new TodoDBHelper(context)
+        mDatabase = new DBHelper(context)
                 .getWritableDatabase();
 
 
@@ -39,10 +39,10 @@ public class TodoDS {
         }*/
     }
 
-    public static TodoDS getInstance(Context context){
+    public static TodoNS getInstance(Context context){
         mContext = context.getApplicationContext();
         if(todoInstance == null){
-            todoInstance = new TodoDS(mContext);
+            todoInstance = new TodoNS(mContext);
 
         }
             return todoInstance;

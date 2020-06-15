@@ -17,7 +17,7 @@ import android.widget.EditText;
 
 import com.example.todoappfragment.R;
 import com.example.todoappfragment.model.Todo;
-import com.example.todoappfragment.model.TodoDS;
+import com.example.todoappfragment.model.TodoNS;
 
 import java.util.UUID;
 
@@ -40,7 +40,6 @@ public class TodoFragment extends Fragment {
     }
 
 
-
     /*
     Rather than the calling the constructor directly, Activity(s) should call newInstance
     and pass required parameters that the fragment needs to create its arguments.
@@ -61,14 +60,15 @@ public class TodoFragment extends Fragment {
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
 
 
-        mTodo = TodoDS.getInstance(getActivity()).getTodo(todoId);
+        mTodo = TodoNS.getInstance(getActivity()).getTodo(todoId);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view  =  inflater.inflate(R.layout.fragment_todo, container, false);
+        View view = inflater.inflate(R.layout.fragment_todo, container, false);
         mEditTextTitle = (EditText) view.findViewById(R.id.todo_title);
         mEditTextTitle.setText(mTodo.getTitle());
         mEditTextTitle.addTextChangedListener(new TextWatcher() {
@@ -95,8 +95,8 @@ public class TodoFragment extends Fragment {
         mCheckBoxIsComplete.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d("DEBUG **** TodoFragment","called onCheckedChanged");
-                mTodo.setComplete(isChecked==true ? 1 : 0);
+                Log.d("DEBUG **** TodoFragment", "called onCheckedChanged");
+                mTodo.setComplete(isChecked == true ? 1 : 0);
             }
         });
 

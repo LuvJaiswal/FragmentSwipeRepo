@@ -15,7 +15,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:parentActivityName=".activities.TodoListActivity">
-
         </activity>
         <activity android:name=".activities.TodoListActivity">
             <intent-filter>

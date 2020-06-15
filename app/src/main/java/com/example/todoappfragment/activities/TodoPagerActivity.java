@@ -12,7 +12,7 @@ import android.util.Log;
 
 import com.example.todoappfragment.R;
 import com.example.todoappfragment.model.Todo;
-import com.example.todoappfragment.model.TodoDS;
+import com.example.todoappfragment.model.TodoNS;
 import com.example.todoappfragment.fragments.TodoFragment;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class TodoPagerActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.todo_view_pager);
 
 
-        mTodos = TodoDS.getInstance(this).getTodos();
+        mTodos = TodoNS.getInstance(this).getTodos();
         Log.d(TAG,"Values:" +"\n\n" +mTodos);
 
 

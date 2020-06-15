@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.example.todoappfragment.R;
 import com.example.todoappfragment.model.Todo;
-import com.example.todoappfragment.model.TodoDS;
+import com.example.todoappfragment.model.TodoNS;
 import com.example.todoappfragment.activities.MainActivity;
 import com.example.todoappfragment.activities.TodoPagerActivity;
 
@@ -70,7 +70,8 @@ public class TodoListFragment extends Fragment {
     private void updateUI(){
 
         //ArrayList todos = new ArrayList<>();
-        TodoDS todoModel = TodoDS.getInstance(getContext());
+
+        TodoNS todoModel = TodoNS.getInstance(getContext());
         List<Todo> todoList = todoModel.getTodos();
 
         if (mTodoAdapter == null) {
@@ -96,11 +97,10 @@ public class TodoListFragment extends Fragment {
             case R.id.new_todo:
 
                 Todo todo = new Todo();
-                TodoDS.getInstance(getActivity()).addTodo(todo);
+                TodoNS.getInstance(getActivity()).addTodo(todo);
 
                 Intent intent = MainActivity.newIntent(getActivity(), todo.getId());
                 startActivity(intent);
-
                 return true;
 
             default:
